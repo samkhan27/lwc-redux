@@ -1,0 +1,13 @@
+<template>
+    <div class="slds-m-around_medium">
+        <ul class="slds-m-around_medium slds-list_dotted">
+            <template for:each={todos} for:item="todo">
+                <li key={todo}>
+                    {todo}
+                </li>
+            </template>
+        </ul>
+        <lightning-input variant="label-hidden" placeholder="new todo" value={newTodo} onchange={changeHandler}></lightning-input>
+        <lightning-button variant="brand" label="Add Todo" title="action" onclick={addTodo} class="slds-m-top_small"></lightning-button>
+    </div>
+</template>

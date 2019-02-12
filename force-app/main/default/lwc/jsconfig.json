@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/async": [
+                "async/async.js"
+            ],
+            "c/connect": [
+                "connect/connect.js"
+            ],
+            "c/contact-list": [
+                "contactList/contactList.js"
+            ],
+            "c/hello-world": [
+                "helloWorld/helloWorld.js"
+            ],
+            "c/hi-world": [
+                "hiWorld/hiWorld.js"
+            ],
+            "c/provider": [
+                "provider/provider.js"
+            ],
+            "c/todo-list": [
+                "todoList/todoList.js"
+            ],
+            "c/utils": [
+                "utils/utils.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ]
+}
