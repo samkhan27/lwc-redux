@@ -1,30 +1,26 @@
 import { LightningElement, track, api } from 'lwc';
 import { loadScript } from 'lightning/platformResourceLoader';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
 import reduxResourceURL from '@salesforce/resourceUrl/redux';
+import lodashResourceURL from '@salesforce/resourceUrl/lodash';
+
 
 export default class Provider extends LightningElement {
-    
-
     @track resourceLoaded = false;
 
     @api storeName = 'redux';
-    @api reducer = (state = [], action) => {
-        switch (action.type) {
-            case 'ADD_TODO':
-                return state.concat([action.payload])
-            default:
-                return state
-        }
-    };
+    @api reducer;
 
     connectedCallback() {
         Promise.all([
             loadScript(this, reduxResourceURL),
+            loadScript(this, lodashResourceURL),
         ])
             .then(() => {
-                const { reducer, storeName } = this;
-                const { createStore, combineReducers } = window.Redux;
-                const store = createStore(reducer, ['Use Redux']);
+                const { storeName } = this;
+                const { createStore } = window.Redux;
+                const store = createStore(this.reducer, ['Use Redux']);
 
                 if (window.reduxStores === undefined) {
                     window.reduxStores = {};
@@ -36,7 +32,7 @@ export default class Provider extends LightningElement {
                 this.dispatchEvent(
                     new ShowToastEvent({
                         title: 'Error loading redux',
-                        message: ':(',
+                        message: error,
                         variant: 'error',
                     }),
                 );

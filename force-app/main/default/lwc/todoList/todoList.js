@@ -18,6 +18,7 @@ export default class TodoList extends LightningElement {
 
     addTodo = () => {
         this.addTodoAction(this.newTodo);
+        this.newTodo = '';
     }
 
     changeHandler(event) {

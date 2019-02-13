@@ -1,0 +1,12 @@
+<template>
+    <li key={todo}>
+        <lightning-layout>
+            <lightning-layout-item size="4">
+                <div>{todo}</div>
+            </lightning-layout-item>
+            <lightning-layout-item size="1" >
+                <lightning-button-icon onclick={removeTodo} variant="bare" size="x-small" icon-name="utility:close" alternative-text="remove" class="slds-m-left_xx-small"></lightning-button-icon>
+            </lightning-layout-item>
+        </lightning-layout>
+    </li>
+</template>
