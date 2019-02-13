@@ -1,5 +1,6 @@
 export const connect = (mapStateToAttributes, mapDispatchToAttributes, storeName = 'redux') => (component) => {
-    const { getState, subscribe, dispatch} = window.reduxStores[storeName];
+    const { getState, subscribe, dispatch } = window.reduxStores[storeName];
+    const { bindActionCreators } = window.Redux;
     
     if(!! mapStateToAttributes) {
         const handleStateChanges = () => {
@@ -14,7 +15,9 @@ export const connect = (mapStateToAttributes, mapDispatchToAttributes, storeName
         component.unsubscribe = subscribe(handleStateChanges);
     }
     if (!! mapDispatchToAttributes) {
-        const attributeDispatchMap = mapDispatchToAttributes(dispatch);
+        const attributeDispatchMap = typeof mapDispatchToAttributes === 'function' 
+            ? mapDispatchToAttributes(dispatch) 
+            : bindActionCreators(mapDispatchToAttributes, dispatch);
 
         Object.entries(attributeDispatchMap).forEach(([key, value]) => {
             component[key] = value;
