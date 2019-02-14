@@ -1,8 +1,8 @@
-import { LightningElement } from 'lwc';
-import todoReducer from 'c/reducers';
+import { LightningElement, track } from 'lwc';
+import reducers from 'c/reducers';
 
 export default class TodoApp extends LightningElement {
-    reducer = todoReducer;
+    reducers = reducers;
 }
 
 

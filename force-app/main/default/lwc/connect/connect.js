@@ -16,7 +16,7 @@ export const connect = (mapStateToAttributes, mapDispatchToAttributes, storeName
     }
     if (!! mapDispatchToAttributes) {
         const attributeDispatchMap = typeof mapDispatchToAttributes === 'function' 
-            ? mapDispatchToAttributes(dispatch) 
+            ? mapDispatchToAttributes(dispatch, component) 
             : bindActionCreators(mapDispatchToAttributes, dispatch);
 
         Object.entries(attributeDispatchMap).forEach(([key, value]) => {

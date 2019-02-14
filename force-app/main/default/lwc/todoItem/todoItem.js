@@ -1,20 +1,24 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, track} from 'lwc';
 import { connect } from 'c/connect';
+import { toggleTodo } from 'c/actions'
+
+
+const mapDispatchToProps = dispatch => ({
+    toggleTodo: id => dispatch(toggleTodo(id))
+})
 
 export default class TodoItem extends LightningElement {
-    @api todo;
+    @api item
+    
+    get styleClass() {
+        return this.item.completed ? 'strikeThrough' : ''
+    }
 
     connectedCallback() {
-        const mapDispatchToProps = dispatch => ({
-            removeTodoAction: (text) => dispatch({ type: 'REMOVE_TODO', payload: text })
-        })
-        connect(undefined, mapDispatchToProps)(this);
+        connect(null, mapDispatchToProps)(this);
     }
 
-    removeTodo = () => {
-        this.removeTodoAction(this.todo);
+    handleClick() {
+        this.toggleTodo(this.item.id);
     }
 }
-
-
-
