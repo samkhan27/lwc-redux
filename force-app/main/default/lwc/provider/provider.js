@@ -5,7 +5,7 @@ import reduxResourceURL from '@salesforce/resourceUrl/redux';
 import reduxThunkResourceURL from '@salesforce/resourceUrl/reduxThunk';
 import lodashResourceURL from '@salesforce/resourceUrl/lodash';
 
-import { logger } from 'c/utils'
+import { logger } from 'c/logger'
 
 export default class Provider extends LightningElement {
     @track resourceLoaded = false;

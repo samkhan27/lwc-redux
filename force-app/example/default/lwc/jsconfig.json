@@ -1,0 +1,61 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/actions": [
+                "actions/actions.js"
+            ],
+            "c/add-todo": [
+                "addTodo/addTodo.js"
+            ],
+            "c/filter-link": [
+                "../../../main/default/lwc/filterLink/filterLink.js"
+            ],
+            "c/reducers": [
+                "reducers/reducers.js"
+            ],
+            "c/todo-app": [
+                "todoApp/todoApp.js"
+            ],
+            "c/todo-footer": [
+                "todoFooter/todoFooter.js"
+            ],
+            "c/todo-item": [
+                "todoItem/todoItem.js"
+            ],
+            "c/todo-list": [
+                "todoList/todoList.js"
+            ],
+            "c/async": [
+                "../../../main/default/lwc/async/async.js"
+            ],
+            "c/connect": [
+                "../../../main/default/lwc/connect/connect.js"
+            ],
+            "c/contact-list": [
+                "../../../main/default/lwc/contactList/contactList.js"
+            ],
+            "c/hello-world": [
+                "../../../main/default/lwc/helloWorld/helloWorld.js"
+            ],
+            "c/hi-world": [
+                "../../../main/default/lwc/hiWorld/hiWorld.js"
+            ],
+            "c/provider": [
+                "../../../main/default/lwc/provider/provider.js"
+            ],
+            "c/reselect": [
+                "../../../main/default/lwc/reselect/reselect.js"
+            ],
+            "c/utils": [
+                "../../../main/default/lwc/utils/utils.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts",
+        "../../../.sfdx/typings/lwc/**/*.d.ts"
+    ]
+}

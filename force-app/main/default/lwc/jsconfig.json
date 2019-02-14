@@ -3,6 +3,30 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
+            "c/actions": [
+                "../../../example/default/lwc/actions/actions.js"
+            ],
+            "c/add-todo": [
+                "../../../example/default/lwc/addTodo/addTodo.js"
+            ],
+            "c/filter-link": [
+                "filterLink/filterLink.js"
+            ],
+            "c/reducers": [
+                "../../../example/default/lwc/reducers/reducers.js"
+            ],
+            "c/todo-app": [
+                "../../../example/default/lwc/todoApp/todoApp.js"
+            ],
+            "c/todo-footer": [
+                "../../../example/default/lwc/todoFooter/todoFooter.js"
+            ],
+            "c/todo-item": [
+                "../../../example/default/lwc/todoItem/todoItem.js"
+            ],
+            "c/todo-list": [
+                "../../../example/default/lwc/todoList/todoList.js"
+            ],
             "c/async": [
                 "async/async.js"
             ],
@@ -21,8 +45,8 @@
             "c/provider": [
                 "provider/provider.js"
             ],
-            "c/todo-list": [
-                "todoList/todoList.js"
+            "c/reselect": [
+                "reselect/reselect.js"
             ],
             "c/utils": [
                 "utils/utils.js"
