@@ -2,7 +2,8 @@
 Lightning Web Components (LWC) bindings for Redux
 
 TODO
-- add examples
-- refactor code 
+- refactor code to separate example from core library
 - optimize performance
+- document
+- write a proper readme
 
