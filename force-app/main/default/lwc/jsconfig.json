@@ -10,7 +10,7 @@
                 "../../../example/default/lwc/addTodo/addTodo.js"
             ],
             "c/filter-link": [
-                "filterLink/filterLink.js"
+                "../../../example/default/lwc/filterLink/filterLink.js"
             ],
             "c/reducers": [
                 "../../../example/default/lwc/reducers/reducers.js"
@@ -27,29 +27,17 @@
             "c/todo-list": [
                 "../../../example/default/lwc/todoList/todoList.js"
             ],
-            "c/async": [
-                "async/async.js"
-            ],
             "c/connect": [
                 "connect/connect.js"
             ],
-            "c/contact-list": [
-                "contactList/contactList.js"
-            ],
-            "c/hello-world": [
-                "helloWorld/helloWorld.js"
-            ],
-            "c/hi-world": [
-                "hiWorld/hiWorld.js"
+            "c/logger": [
+                "logger/logger.js"
             ],
             "c/provider": [
                 "provider/provider.js"
             ],
             "c/reselect": [
                 "reselect/reselect.js"
-            ],
-            "c/utils": [
-                "utils/utils.js"
             ]
         }
     },
