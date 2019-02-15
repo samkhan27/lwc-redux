@@ -12,7 +12,10 @@ export default class Provider extends LightningElement {
 
     @api storeName = 'redux';
     @api reducers;
+    @api initalState;
     @api useCombineReducers = false;
+    @api useThunk = false;
+    @api useLogger = false;
 
     async connectedCallback() {
         await Promise.all([
@@ -21,16 +24,35 @@ export default class Provider extends LightningElement {
             loadScript(this, lodashResourceURL),
         ]);
         
-        const { storeName, reducers, useCombineReducers } = this;
-        const { createStore, applyMiddleware, combineReducers } = window.Redux;
+        const { 
+            storeName, 
+            reducers, 
+            initalState, 
+            useCombineReducers, 
+            useThunk, 
+            useLogger 
+        } = this;
+
+        const { 
+            createStore, 
+            applyMiddleware, 
+            combineReducers 
+        } = window.Redux;
+
         const ReduxThunk = window.ReduxThunk.default
 
         const rootReducer = useCombineReducers ? combineReducers(reducers) : reducers;
 
-        const store = createStore(
-            rootReducer,
-            applyMiddleware(ReduxThunk, logger)
-        );
+        let enhancer;
+        if (useThunk && useLogger) {
+            enhancer = applyMiddleware(ReduxThunk, logger)
+        } else if (useThunk) {
+            enhancer = applyMiddleware(ReduxThunk);
+        } else if (useLogger) {
+            enhancer = applyMiddleware(logger);
+        }
+        
+        const store = createStore(rootReducer, initalState, enhancer);
         
         if (window.reduxStores === undefined) {
             window.reduxStores = {};

@@ -14,6 +14,7 @@ export default class TodoFooter extends LightningElement {
     @track variant
     @api label; 
     @api filter;
+    
     connectedCallback() {
         connect(mapStateToProps, mapDispatchToProps)(this);
     }

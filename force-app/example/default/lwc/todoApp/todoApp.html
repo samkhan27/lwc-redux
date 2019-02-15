@@ -1,5 +1,5 @@
 <template>
-    <c-provider reducers={reducers} use-combine-reducers>
+    <c-provider reducers={reducers} use-combine-reducers use-thunk use-logger>
         <lightning-card title="To Do" icon-name="standard:task">
             <c-add-todo></c-add-todo>
             <c-todo-list></c-todo-list>
