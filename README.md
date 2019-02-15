@@ -66,11 +66,11 @@ Also, the connect() assumes that by the time it's invoked, the redux library and
 
 `storeName` - the name of the store to connect to (defaults to redux)
 
-**Connect returns a function that takes in the component that is to be connected**
+*Connect returns a function that takes in the component that is to be connected*
 
 NOTE: I'll be adding more functionality and therefore potentially more arguments to the connect() function in the coming days. Also I plan to do some performance optimizations once I start thoroughly testing lwc-redux in production.
 
-######Example usage
+##### Example usage
 ```javascript
 import { LightningElement, api, track } from 'lwc';
 import { connect } from 'c/connect'
