@@ -24,11 +24,11 @@ The Provider component in this project works differently. First, it loads the re
 
 Because the stores are global they can be accessed from anywhere but you should only access them through the use of the connect module (Nothing is going to stop you from doing otherwise, of course. But then, nothing stops you from making mutations to the redux state either).
 
-This decision to house the redux store on the global window object may seem like a bad practise but sice LWC doesn't have an equivalent of React's [Context Api](https://reactjs.org/docs/context.html), this is the only way to make the store available to the children, and grandchildren, of the Provider component without having to pass it down each level.
+This decision to house the redux store on the global window object may seem like a bad practise but sice LWC doesn't have an equivalent of React's [Context Api](https://reactjs.org/docs/context.html), this is the only way to make the store available to the children, and grandchildren, of the Provider component without having to pass it down each level. This is extremely cumbersome in parctise as the app grows large.
 
 Also the reason I've decided to place the store creation logic in the Provider component is that generally you only do this once on an app and third party libraries are loaded asynchrounously in slaesforce through static resources. You can, of course, change the behaviour of this as you see fit or decide to do away with the provider component completely. You can just load up the Redux libabry and create a global store on one of your components and then just use the connect function in this library to access it. 
 
-NOTE: This is also the part of the library that might go through the greatest amount of change in the coming days as I may decide there are better, more intuitive ways of doing this and implement those.
+NOTE: This is also the part of the library that might go through the greatest amount of change in the coming days as I may decide there are better, more intuitive ways of doing this.
 
 ##### Provider Attributes
 `store-name` - Name of the redux store (defaults to 'redux')
