@@ -2,7 +2,7 @@
 # LWC Redux
 [Redux](https://redux.js.org/introduction/getting-started) bindings for Salesforces' propreteray [Lightning Web Components (LWC)](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html) framework. This project aims to bring predictable state management to apps written with LWC that live on Salesforce.  
 
-NOTE: This project is still in very early stages and is likely to go through significant changes in design and based on decisions and feedback from usage in more complex applications than the one provided in the example
+NOTE: This project is still in very early stages and is likely to go through significant changes in design based on decisions and feedback from usage in more complex applications than the one provided in the example
 
 ## Installation
 Just click on the deploy button below.
@@ -13,7 +13,7 @@ Alternately you can just go into the `force-app/main` folder and copy the static
 
 ## Documentation
 
-The library provides two key modules. The connect module to manage the store interaction logic and the provider component to wrap the application with. If you've used [React Redux](https://react-redux.js.org/) most of this will seem familiar to you. It's worth taking a look at the documentation for React Redux since the first two arguments to connect(), `mapStateToAttributes` and `mapDispatchToAttributues` mimics the behavior of their corresponding analogues `mapStateToProps` and `mapDispatchToProps` in React Redux. 
+The library provides two key modules. The connect module to manage the store interaction logic and the provider component to wrap the application with. If you've used [React Redux](https://react-redux.js.org/) most of this will seem familiar to you. It's worth taking a look at the documentation for React Redux since the first two arguments to connect(), `mapStateToAttributes` and `mapDispatchToAttributes` mimics the behavior of their corresponding analogues `mapStateToProps` and `mapDispatchToProps` in React Redux. 
 
 However, there are key differences between how React and LWC works and consequently, the connect and provider modules in this project work and behave very differently from those in React Redux.
 
@@ -24,7 +24,7 @@ The Provider component in this project works differently. First, it loads the re
 
 Because the stores are global they can be accessed from anywhere but you should only access them through the use of the connect module (Nothing is going to stop you from doing otherwise, of course. But then, nothing stops you from making mutations to the redux state either).
 
-This decision to house the redux store on the global window object may seem like a bad practise but sice LWC doesn't have an equivalent of React's [Context Api](https://reactjs.org/docs/context.html), this is the only way to make the store available to the children, and grandchildren, of the Provider component without having to pass it down each level. This is extremely cumbersome in parctise as the app grows large.
+This decision to house the redux store on the global window object may seem like a bad practise; however, sice LWC doesn't have an equivalent of React's [Context Api](https://reactjs.org/docs/context.html), this is the only way to make the store available to the children, and grandchildren, of the Provider component without having to pass it down each level. This is extremely cumbersome in parctise as the app grows large.
 
 Also the reason I've decided to place the store creation logic in the Provider component is that generally you only do this once on an app and third party libraries are loaded asynchrounously in slaesforce through static resources. You can, of course, change the behaviour of this as you see fit or decide to do away with the provider component completely. You can just load up the Redux libabry and create a global store on one of your components and then just use the connect function in this library to access it. 
 
