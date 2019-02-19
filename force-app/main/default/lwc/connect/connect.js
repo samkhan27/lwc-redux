@@ -12,7 +12,19 @@ export const connect = (mapStateToAttributes, mapDispatchToAttributes, storeName
         }
 
         handleStateChanges();
-        component.unsubscribe = subscribe(handleStateChanges);
+        component.unsubscribeFromState = subscribe(handleStateChanges);
+        if (component.disconnectedCallback) {
+            const disconnectedCallbackClone = component.disconnectedCallback.bind(component);
+            component.disconnectedCallback = () => {
+                disconnectedCallbackClone();
+                component.unsubscribeFromState();
+            }
+        } else {
+            component.disconnectedCallback = () => {
+                component.unsubscribeFromState();
+            }
+        }
+        
     }
     if (!! mapDispatchToAttributes) {
         const attributeDispatchMap = typeof mapDispatchToAttributes === 'function' 
