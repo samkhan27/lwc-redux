@@ -1,4 +1,6 @@
-export const connect = (mapStateToAttributes, mapDispatchToAttributes, storeName = 'redux') => (component) => {
+import { DEFAULT_STORE_NAME } from 'c/constants';
+
+export const connect = (mapStateToAttributes, mapDispatchToAttributes, storeName = DEFAULT_STORE_NAME) => (component) => {
     const { getState, subscribe, dispatch } = window.reduxStores[storeName];
     const { bindActionCreators } = window.Redux;
     

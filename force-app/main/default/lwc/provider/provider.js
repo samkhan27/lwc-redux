@@ -5,14 +5,15 @@ import reduxResourceURL from '@salesforce/resourceUrl/redux';
 import reduxThunkResourceURL from '@salesforce/resourceUrl/reduxThunk';
 import lodashResourceURL from '@salesforce/resourceUrl/lodash';
 
-import { logger } from 'c/logger'
+import { createLoggerMiddleware } from 'c/logger'
+import { DEFAULT_STORE_NAME } from 'c/constants'
 
 export default class Provider extends LightningElement {
     @track resourceLoaded = false;
 
-    @api storeName = 'redux';
+    @api storeName = DEFAULT_STORE_NAME;
     @api reducers;
-    @api initalState;
+    @api initialState = {};
     @api useCombineReducers = false;
     @api useThunk = false;
     @api useLogger = false;
@@ -27,7 +28,7 @@ export default class Provider extends LightningElement {
         const { 
             storeName, 
             reducers, 
-            initalState, 
+            initialState, 
             useCombineReducers, 
             useThunk, 
             useLogger 
@@ -39,10 +40,10 @@ export default class Provider extends LightningElement {
             combineReducers 
         } = window.Redux;
 
-        const ReduxThunk = window.ReduxThunk.default
-
+        const ReduxThunk = window.ReduxThunk.default;
+        const logger = createLoggerMiddleware(storeName);
         const rootReducer = useCombineReducers ? combineReducers(reducers) : reducers;
-
+        
         let enhancer;
         if (useThunk && useLogger) {
             enhancer = applyMiddleware(ReduxThunk, logger)
@@ -52,12 +53,14 @@ export default class Provider extends LightningElement {
             enhancer = applyMiddleware(logger);
         }
         
-        const store = createStore(rootReducer, initalState, enhancer);
+        window.reduxStores = window.reduxStores || {};
+        const store = createStore(rootReducer, initialState, enhancer);
         
-        if (window.reduxStores === undefined) {
-            window.reduxStores = {};
-        } 
-        window.reduxStores[storeName] = store;
+        if (window.reduxStores[storeName] === undefined) {
+            window.reduxStores[storeName] = store;
+        } else {
+            throw 'You may be trying to use the same redux store from multiple apps/providers. This feature is currently not supported.Use multple stores for multiple apps by passing in the storeName attribute to provider and connect()';
+        }
         this.resourceLoaded = true;
     }
 
