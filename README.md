@@ -54,7 +54,7 @@ Primary provider
     <c-app></c-app>
 </c-provider>
 ```
-Secondary Provider for use case where multiple apps use the same store. here c-app-two uses the same store ass c-app
+Secondary provider (here, c-app-two uses the same store as c-app)
 ```html
 <c-provider secondary>
     <c-app-two></c-app-two>
